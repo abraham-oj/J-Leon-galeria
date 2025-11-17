@@ -1,13 +1,114 @@
-<section
-  class="py-20 px-6 bg-white"
-  transition-name="about"
-  transition-animate="slide"
->
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-4xl font-bold text-negro mb-8">Sobre el Artista</h2>
-    <p class="text-gris text-lg leading-relaxed">
-      J. León C. explora la condición humana a través del óleo, la mixta y el grabado.
-      Sus obras son reflejos de la memoria, el deseo y la trascendencia.
-    </p>
+---
+const trajectory = [
+  {
+    year: "2024",
+    title: "Exposición Individual",
+    place: "Las Conchas Galería y Café",
+    desc: "Muestra pictórica individual presentada de abril a junio."
+  },
+  {
+    year: "2023",
+    title: "Doctorado Honoris Causa",
+    place: "Claustro Nobel de las Bellas Artes",
+    desc: "Otorgado por el Colegio de Investigaciones y posgrados A.C. Generación Manuel Reigadas Huerga.",
+    highlight: true
+  },
+  {
+    year: "2023",
+    title: "Doble Reconocimiento del Senado",
+    place: "Senado de la República",
+    desc: "Por su participación en 'Por amor a Puebla' y por su destacada trayectoria y aportación a la cultura poblana."
+  },
+  {
+    year: "2018 - 2023",
+    title: "Jurado de Arte y Cultura",
+    place: "CECyTE & CENHCH",
+    desc: "Jurado en Festivales Estatales y Nacionales de Arte y Cultura (2018, 2023) y concursos regionales (2022)."
+  },
+  {
+    year: "2021",
+    title: "Exposición Individual",
+    place: "Casa de la 14",
+    desc: "Exhibición destacada en el circuito cultural poblano."
+  },
+  {
+    year: "2014 - 2019",
+    title: "Exposiciones Colectivas",
+    place: "Oaxaca, Atlixco y Puebla",
+    desc: "Participación con el taller 'El Gallo' (Congreso de Oaxaca), Galería Nexus, y Facultad de Administración BUAP."
+  },
+  {
+    year: "2015",
+    title: "Mi vida en unos trazos",
+    place: "Casa de la Cultura de Puebla",
+    desc: "Exposición individual que marcó un hito en su carrera temprana."
+  },
+  {
+    year: "2011 - 2012",
+    title: "Inicios y Concursos",
+    place: "San Pedro Cholula & Casa del Escritor",
+    desc: "Presentaciones pictóricas y participación en el concurso de pintura InterCETis."
+  }
+];
+---
+
+<section id="sobre-mi" class="py-24 bg-white relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-glucosa to-transparent opacity-50"></div>
+
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+
+    <div class="text-center mb-16">
+      <span class="text-basenji font-bold tracking-[0.2em] uppercase text-sm">Trayectoria</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-argos mt-2 mb-6">El Artista</h2>
+      <p class="text-lg text-mensajero max-w-2xl mx-auto leading-relaxed font-serif italic">
+        "No solo pinto lienzos; construyo puentes entre la emoción humana y la trascendencia cultural."
+      </p>
+    </div>
+
+    <div class="relative border-l-2 border-basenji/20 ml-4 md:ml-1/2 space-y-12">
+
+      {trajectory.map((item, index) => (
+        <div class={`relative pl-8 md:pl-0 flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+
+          <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-basenji border-4 border-white shadow-sm z-10"></div>
+
+          <div class="hidden md:block w-1/2"></div>
+
+          <div class={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
+            <div class={`p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 ${item.highlight ? 'bg-argos text-white shadow-xl border-l-4 border-basenji' : 'bg-glucosa/30 hover:bg-glucosa shadow-sm hover:shadow-md'}`}>
+
+              <span class={`text-sm font-bold tracking-widest uppercase mb-1 block ${item.highlight ? 'text-basenji' : 'text-basenji'}`}>
+                {item.year}
+              </span>
+
+              <h3 class={`text-xl font-serif font-bold mb-2 ${item.highlight ? 'text-white' : 'text-argos'}`}>
+                {item.title}
+              </h3>
+
+              <p class={`text-xs font-bold uppercase tracking-wide mb-3 ${item.highlight ? 'text-gray-300' : 'text-argos/60'}`}>
+                📍 {item.place}
+              </p>
+
+              <p class={`text-sm leading-relaxed ${item.highlight ? 'text-gray-200' : 'text-mensajero'}`}>
+                {item.desc}
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <div class="mt-20 text-center">
+      <div class="inline-block p-1 rounded-full border border-basenji/30 p-8">
+        <p class="font-serif text-xl text-argos italic">
+          "Doctorado Honoris Causa por el Claustro Nobel de las Bellas Artes"
+        </p>
+        <div class="w-12 h-1 bg-basenji mx-auto mt-4"></div>
+      </div>
+    </div>
+
   </div>
 </section>

@@ -1,0 +1,84 @@
+---
+import artworks from '../data/artworks.json';
+---
+
+<section id="galeria" class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+      <h2 class="text-5xl font-serif font-bold text-argos mb-4">Catálogo Selecto</h2>
+      <p class="text-mensajero uppercase tracking-widest text-sm">Óleo • Mixta • Grabado</p>
+    </div>
+
+    <div id="gallery-grid" class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+
+      {artworks.map((art, index) => (
+        <div class={`break-inside-avoid mb-8 group ${index >= 9 ? 'hidden gallery-item-hidden' : ''}`}>
+
+          <div class="bg-glucosa p-4 shadow-sm hover:shadow-2xl transition-all duration-500 rounded-sm">
+
+            <div class="relative overflow-hidden bg-white">
+              <img
+                src={art.image}
+                alt={art.title}
+                class="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+
+              <div class="absolute inset-0 bg-argos/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4 z-20">
+                <h3 class="text-white font-serif text-xl md:text-2xl italic mb-2">{art.title}</h3>
+                <p class="text-glucosa text-xs uppercase tracking-widest mb-4">{art.measure}</p>
+                <p class="text-basenji text-lg font-bold mb-6">{art.price}</p>
+                <a
+                  href={`https://wa.me/522228762812?text=Me interesa la obra ${art.title}`}
+                  target="_blank"
+                  class="px-6 py-2 border border-white text-white hover:bg-white hover:text-argos transition uppercase text-xs font-bold"
+                >
+                  Solicitar
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-col md:flex-row justify-between items-start md:items-end border-t border-argos/10 pt-3 gap-2">
+              <div class="w-full">
+                <h4 class="text-argos font-bold font-serif text-xl leading-tight break-words">{art.title}</h4>
+                <span class="text-xs text-mensajero font-bold uppercase block mt-1">{art.year}</span>
+              </div>
+              <span class="text-basenji font-bold text-sm whitespace-nowrap md:text-right w-full md:w-auto">
+                {art.technique}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <div class="text-center mt-16">
+      <button id="load-more-btn" class="px-10 py-4 bg-transparent border-2 border-argos text-argos hover:bg-argos hover:text-white transition-all duration-300 font-bold uppercase tracking-widest">
+        Ver Todo el Catálogo ({artworks.length} Obras)
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const hiddenItems = document.querySelectorAll('.gallery-item-hidden');
+
+  loadMoreBtn?.addEventListener('click', () => {
+    hiddenItems.forEach(item => {
+      item.classList.remove('hidden');
+      item.classList.add('animate-fade-in');
+    });
+    loadMoreBtn.style.display = 'none';
+  });
+</script>
+
+<style>
+  .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>

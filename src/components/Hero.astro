@@ -1,0 +1,98 @@
+<section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-12 overflow-hidden bg-glucosa">
+
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <div class="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-mensajero to-transparent"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
+
+    <div class="text-left space-y-8 order-2 md:order-1">
+      <div class="animate-fade-in-up">
+        <span class="text-basenji font-bold tracking-[0.25em] uppercase text-sm border-b-2 border-basenji pb-1">Portafolio Oficial</span>
+      </div>
+
+      <h1 class="text-6xl md:text-8xl font-serif font-bold text-argos leading-none tracking-tight">
+        J. León C.
+      </h1>
+
+      <p class="text-xl text-argos/80 font-serif italic max-w-lg leading-relaxed border-l-4 border-mensajero pl-6">
+        "Cada trazo es una historia. Cada color, una emoción. Explorando la condición humana a través de la textura y la memoria."
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row gap-5">
+        <a href="#galeria" class="px-10 py-4 bg-argos text-white text-center font-bold uppercase tracking-widest hover:bg-basenji transition-all shadow-xl transform hover:-translate-y-1">
+          Explorar Galería
+        </a>
+        <a href="#generador" class="px-10 py-4 border-2 border-argos text-argos text-center font-bold uppercase tracking-widest hover:bg-argos hover:text-white transition-all">
+          Crear Arte
+        </a>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center md:justify-end order-1 md:order-2">
+      <div class="relative group cursor-pointer" id="profile-trigger">
+
+        <div class="absolute inset-0 rounded-full border border-basenji/30 scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+        <div class="absolute inset-0 rounded-full border border-dashed border-argos/20 scale-125 group-hover:rotate-180 transition-transform duration-[20s] linear"></div>
+
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10">
+          <img
+            src="/images/profile.jpg"
+            alt="J. León C."
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+
+          <div class="absolute inset-0 bg-argos/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span class="text-white font-bold tracking-widest text-sm uppercase border border-white px-3 py-1">Ver Foto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="profile-modal" class="fixed inset-0 z-[100] bg-argos/95 hidden flex items-center justify-center p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <div class="relative max-w-4xl max-h-screen w-full flex flex-col items-center">
+      <button id="close-modal" class="absolute -top-12 right-0 text-white hover:text-basenji transition text-xl font-bold uppercase tracking-widest">
+        Cerrar [X]
+      </button>
+      <img
+        src="/images/profile.jpg"
+        alt="Perfil Completo"
+        class="max-h-[80vh] w-auto object-contain shadow-2xl border-8 border-white rounded-sm"
+      />
+    </div>
+  </div>
+
+</section>
+
+<script>
+  // Lógica del Lightbox
+  document.addEventListener('astro:page-load', () => {
+    const trigger = document.getElementById('profile-trigger');
+    const modal = document.getElementById('profile-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    if(trigger && modal && closeBtn) {
+      trigger.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.remove('opacity-0'), 10); // Fade in
+      });
+
+      const closeModal = () => {
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 300); // Wait for fade out
+      };
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+  });
+</script>
+
+<style>
+  .animate-fade-in-up { animation: fadeInUp 1s ease-out; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>

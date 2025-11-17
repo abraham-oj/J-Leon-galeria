@@ -1,14 +1,19 @@
 {
-  "name": "j-leon-galeria",
+  "name": "J-Leon-galeria",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.15.8"
+    "aos": "^2.3.4",
+    "astro": "^5.15.8",
+    "particles.js": "^2.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "tailwindcss": "^3.4.0"
   }
 }

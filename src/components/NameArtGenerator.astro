@@ -1,0 +1,118 @@
+<section id="generador" class="py-16 md:py-24 bg-argos text-glucosa overflow-hidden relative">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+
+    <div class="space-y-6 md:space-y-8 order-2 md:order-1">
+      <div class="border-l-4 border-basenji pl-4 md:pl-6">
+        <span class="text-basenji font-bold tracking-widest uppercase text-xs md:text-sm">Experiencia Interactiva</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-bold mt-2 text-white">El Arte de tu Nombre</h2>
+      </div>
+      <p class="text-mensajero text-base md:text-lg leading-relaxed">
+        Algoritmo generativo v2.0: Tu identidad convertida en una pieza abstracta única lista para descargar.
+      </p>
+
+      <div class="bg-white/5 p-6 md:p-8 rounded border border-white/10 backdrop-blur-sm">
+        <label class="block text-xs font-bold uppercase tracking-widest mb-2 text-glucosa/70">Ingresa tu nombre</label>
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="Ej: Abraham"
+          class="w-full bg-transparent border-b-2 border-mensajero text-xl md:text-2xl text-white py-2 focus:outline-none focus:border-basenji transition-colors placeholder-white/20 font-serif"
+          maxlength="25"
+          autocomplete="off"
+        />
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button id="generateBtn" type="button" class="w-full sm:flex-1 bg-basenji text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-basenji transition-all shadow-lg text-sm md:text-base">
+            Generar
+          </button>
+          <button id="downloadBtn" type="button" class="w-full sm:flex-1 border border-glucosa text-glucosa px-6 py-3 font-bold uppercase tracking-widest hover:bg-glucosa hover:text-argos transition-all opacity-50 cursor-not-allowed text-sm md:text-base" disabled>
+            Descargar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center items-center bg-black/20 p-4 md:p-8 rounded-xl shadow-inner order-1 md:order-2">
+      <div class="relative shadow-2xl border-[6px] md:border-[10px] border-white bg-white w-full max-w-[350px] md:max-w-[450px] mx-auto">
+        <canvas id="artCanvas" width="500" height="500" class="w-full h-auto aspect-square bg-glucosa block"></canvas>
+
+        <div class="bg-white px-3 py-2 flex justify-between items-end">
+          <span class="text-[8px] md:text-[10px] text-gray-400 uppercase tracking-widest">Original Digital</span>
+          <span class="font-serif text-argos font-bold italic text-sm md:text-base">J. León C.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const canvas = document.getElementById('artCanvas') as HTMLCanvasElement;
+    const ctx = canvas?.getContext('2d');
+    const btn = document.getElementById('generateBtn');
+    const dlBtn = document.getElementById('downloadBtn');
+    const input = document.getElementById('nameInput') as HTMLInputElement;
+
+    if (!canvas || !ctx || !btn || !input) return;
+
+    const colors = ['#8C4B34', '#2F404F', '#A3B3B8', '#EADDCA', '#D4AF37', '#CD5C5C'];
+
+    const generateArt = () => {
+      const name = input.value.trim();
+      if (!name) return;
+
+      dlBtn?.removeAttribute('disabled');
+      dlBtn?.classList.remove('opacity-50', 'cursor-not-allowed');
+
+      ctx.fillStyle = '#EADDCA';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      let seed = 0;
+      for (let i = 0; i < name.length; i++) seed += name.charCodeAt(i);
+      const random = () => { const x = Math.sin(seed++) * 10000; return x - Math.floor(x); };
+
+      ctx.globalCompositeOperation = 'multiply';
+      const shapes = 30 + name.length * 2;
+
+      for (let i = 0; i < shapes; i++) {
+        ctx.beginPath();
+        ctx.fillStyle = colors[Math.floor(random() * colors.length)];
+        ctx.globalAlpha = random() * 0.5 + 0.1;
+
+        const x = random() * canvas.width;
+        const y = random() * canvas.height;
+        const r = random() * 100 + 20;
+
+        if (random() > 0.5) ctx.arc(x, y, r, 0, Math.PI * 2);
+        else ctx.rect(x - r, y - r, r * 2, r * 2);
+
+        ctx.fill();
+      }
+
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1.0;
+      ctx.font = 'bold italic 50px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#2F404F';
+      ctx.fillText(name, canvas.width/2, canvas.height/2);
+    };
+
+    btn.addEventListener('click', generateArt);
+
+    dlBtn?.addEventListener('click', () => {
+      try {
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement('a');
+        link.download = `Obra-${input.value || 'Arte'}.png`;
+        link.href = image;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+</script>

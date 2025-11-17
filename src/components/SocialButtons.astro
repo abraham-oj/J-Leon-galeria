@@ -1,11 +1,40 @@
-<div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-  <a href="https://wa.me/522228762812" target="_blank" class="bg-oro p-3 rounded-full shadow-xl hover:scale-110 transition transform">
+<div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50 animate-fade-in-up">
+
+  <a
+    href="https://wa.me/message/I766YDPRFFNPG1"
+    target="_blank"
+    class="bg-white p-3 rounded-full shadow-xl hover:scale-110 transition transform group border border-gray-100"
+    aria-label="Contactar por WhatsApp"
+  >
     <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp" class="w-7 h-7" />
   </a>
-  <a href="https://www.facebook.com/profile.php?id=100053483177404" target="_blank" class="bg-oro p-3 rounded-full shadow-xl hover:scale-110 transition transform">
+
+  <a
+    href="https://www.facebook.com/profile.php?id=100053483177404"
+    target="_blank"
+    class="bg-white p-3 rounded-full shadow-xl hover:scale-110 transition transform group border border-gray-100"
+    aria-label="Ver Facebook"
+  >
     <img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook" class="w-7 h-7" />
   </a>
-  <a href="https://www.instagram.com/abraham_o.perez/" target="_blank" class="bg-oro p-3 rounded-full shadow-xl hover:scale-110 transition transform">
-    <img src="https://img.icons8.com/color/48/instagram.png" alt="Instagram" class="w-7 h-7" />
+
+  <a
+    href="https://www.instagram.com/leon.el.pintor/"
+    target="_blank"
+    class="bg-white p-3 rounded-full shadow-xl hover:scale-110 transition transform group border border-gray-100"
+    aria-label="Ver Instagram"
+  >
+    <img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram" class="w-7 h-7" />
   </a>
+
 </div>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out 1s backwards; /* Retraso para que no tape al cargar */
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

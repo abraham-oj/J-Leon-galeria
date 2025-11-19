@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "astro": "^5.15.8",
+    "astro": "^5.15.9",
     "particles.js": "^2.0.0"
   },
   "devDependencies": {

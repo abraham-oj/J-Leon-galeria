@@ -1,114 +1,250 @@
 ---
+// Datos de la trayectoria (Tu array original)
 const trajectory = [
   {
     year: "2024",
     title: "Exposición Individual",
     place: "Las Conchas Galería y Café",
-    desc: "Muestra pictórica individual presentada de abril a junio."
+    desc: "Muestra pictórica individual presentada de abril a junio.",
   },
   {
     year: "2023",
     title: "Doctorado Honoris Causa",
     place: "Claustro Nobel de las Bellas Artes",
     desc: "Otorgado por el Colegio de Investigaciones y posgrados A.C. Generación Manuel Reigadas Huerga.",
-    highlight: true
+    highlight: true,
   },
   {
     year: "2023",
     title: "Doble Reconocimiento del Senado",
     place: "Senado de la República",
-    desc: "Por su participación en 'Por amor a Puebla' y por su destacada trayectoria y aportación a la cultura poblana."
+    desc: "Por su participación en 'Por amor a Puebla' y por su destacada trayectoria y aportación a la cultura poblana.",
   },
   {
     year: "2018 - 2023",
     title: "Jurado de Arte y Cultura",
     place: "CECyTE & CENHCH",
-    desc: "Jurado en Festivales Estatales y Nacionales de Arte y Cultura (2018, 2023) y concursos regionales (2022)."
+    desc: "Jurado en Festivales Estatales y Nacionales de Arte y Cultura (2018, 2023) y concursos regionales (2022).",
   },
   {
     year: "2021",
     title: "Exposición Individual",
     place: "Casa de la 14",
-    desc: "Exhibición destacada en el circuito cultural poblano."
+    desc: "Exhibición destacada en el circuito cultural poblano.",
   },
   {
     year: "2014 - 2019",
     title: "Exposiciones Colectivas",
     place: "Oaxaca, Atlixco y Puebla",
-    desc: "Participación con el taller 'El Gallo' (Congreso de Oaxaca), Galería Nexus, y Facultad de Administración BUAP."
+    desc: "Participación con el taller 'El Gallo' (Congreso de Oaxaca), Galería Nexus, y Facultad de Administración BUAP.",
   },
   {
     year: "2015",
     title: "Mi vida en unos trazos",
     place: "Casa de la Cultura de Puebla",
-    desc: "Exposición individual que marcó un hito en su carrera temprana."
+    desc: "Exposición individual que marcó un hito en su carrera temprana.",
   },
   {
     year: "2011 - 2012",
     title: "Inicios y Concursos",
     place: "San Pedro Cholula & Casa del Escritor",
-    desc: "Presentaciones pictóricas y participación en el concurso de pintura InterCETis."
-  }
+    desc: "Presentaciones pictóricas y participación en el concurso de pintura InterCETis.",
+  },
 ];
 ---
 
-<section id="sobre-mi" class="py-24 bg-white relative overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-glucosa to-transparent opacity-50"></div>
+<section id="sobre-mi" class="relative py-24 bg-white overflow-hidden">
+  <div
+    class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-glucosa/40 to-transparent opacity-60 pointer-events-none"
+  >
+  </div>
 
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+      <div
+        class="relative flex justify-center lg:justify-end"
+        data-aos="fade-right"
+      >
+        <div
+          class="absolute top-4 right-4 w-full max-w-sm h-full border-2 border-oro rounded-2xl -z-10 hidden md:block"
+        >
+        </div>
 
-    <div class="text-center mb-16">
-      <span class="text-basenji font-bold tracking-[0.2em] uppercase text-sm">Trayectoria</span>
-      <h2 class="text-4xl md:text-5xl font-serif font-bold text-argos mt-2 mb-6">El Artista</h2>
-      <p class="text-lg text-mensajero max-w-2xl mx-auto leading-relaxed font-serif italic">
-        "No solo pinto lienzos; construyo puentes entre la emoción humana y la trascendencia cultural."
-      </p>
+        <div
+          class="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl aspect-[9/16] bg-black group border-4 border-white"
+        >
+          <video
+            class="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity duration-500"
+            autoplay
+            loop
+            muted
+            playsinline
+            poster="/images/perfil-placeholder.jpg"
+          >
+            <source src="/videos/obras-leon.mp4" type="video/mp4" />
+            Tu navegador no soporta videos.
+          </video>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"
+          >
+          </div>
+
+          <div
+            class="absolute bottom-8 left-0 right-0 text-center text-white px-4"
+          >
+            <p class="font-serif italic text-lg">
+              "El arte es el espejo del alma"
+            </p>
+            <div class="w-12 h-0.5 bg-oro mx-auto mt-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center lg:text-left" data-aos="fade-left">
+        <span
+          class="text-basenji font-bold tracking-[0.2em] uppercase text-sm block mb-2"
+          >Sobre el Artista</span
+        >
+        <h2 class="text-5xl font-serif font-bold text-argos mb-6">
+          J. León C.
+        </h2>
+
+        <div
+          class="prose prose-lg text-mensajero/90 font-sans mb-8 mx-auto lg:mx-0"
+        >
+          <p
+            class="italic text-xl text-argos font-serif mb-6 border-l-4 border-oro pl-4"
+          >
+            "No solo pinto lienzos; construyo puentes entre la emoción humana y
+            la trascendencia cultural."
+          </p>
+          <p class="mb-4">
+            Artista plástico con una visión contemporánea que desafía los
+            límites entre lo figurativo y lo abstracto. Su obra es una
+            exploración visceral de la condición humana.
+          </p>
+          <p>
+            Recientemente galardonado con el <strong
+              >Doctorado Honoris Causa</strong
+            > por el Claustro Nobel de las Bellas Artes, J. León C. combina técnica
+            académica con una libertad creativa absoluta.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mt-8"
+        >
+          <a
+            href="#contacto"
+            class="btn-primary flex items-center justify-center gap-2 shadow-lg shadow-oro/20 hover:shadow-oro/40 transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <span>Contactar al Artista</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            href="/JORGE-LEON-CARRILLO CV-ART.pdf"
+            target="_blank"
+            download="J-Leon-C-CV-Artistico"
+            class="group flex items-center justify-center gap-2 px-6 py-3 border border-argos text-argos font-bold rounded shadow-sm hover:bg-argos hover:text-white transition-all duration-300 uppercase text-xs tracking-widest"
+          >
+            <span>Descargar CV</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-4 h-4 group-hover:translate-y-1 transition-transform"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M12 9.75l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="relative border-l-2 border-basenji/20 ml-4 md:ml-1/2 space-y-12">
+<div class="relative pt-12 border-t border-argos/5">
+  <div class="text-center mb-16">
+    <h3 class="text-3xl md:text-4xl font-serif font-bold text-argos">
+      Cronología
+    </h3>
+    <p class="text-mensajero mt-2">Los pasos que han forjado el camino.</p>
+  </div>
 
-      {trajectory.map((item, index) => (
-        <div class={`relative pl-8 md:pl-0 flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+  <div class="relative border-l-2 border-basenji/20 ml-4 md:ml-1/2 space-y-12">
+    {
+      trajectory.map((item, index) => (
+        <div
+          class={`relative pl-8 md:pl-0 flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+        >
+          <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-basenji border-4 border-white shadow-sm z-10" />
 
-          <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-basenji border-4 border-white shadow-sm z-10"></div>
+          <div class="hidden md:block w-1/2" />
 
-          <div class="hidden md:block w-1/2"></div>
-
-          <div class={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-            <div class={`p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 ${item.highlight ? 'bg-argos text-white shadow-xl border-l-4 border-basenji' : 'bg-glucosa/30 hover:bg-glucosa shadow-sm hover:shadow-md'}`}>
-
-              <span class={`text-sm font-bold tracking-widest uppercase mb-1 block ${item.highlight ? 'text-basenji' : 'text-basenji'}`}>
+          <div
+            class={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}`}
+          >
+            <div
+              class={`p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 ${item.highlight ? "bg-argos text-white shadow-xl border-l-4 border-basenji" : "bg-glucosa/30 hover:bg-glucosa shadow-sm hover:shadow-md"}`}
+            >
+              <span
+                class={`text-sm font-bold tracking-widest uppercase mb-1 block ${item.highlight ? "text-oro" : "text-basenji"}`}
+              >
                 {item.year}
               </span>
 
-              <h3 class={`text-xl font-serif font-bold mb-2 ${item.highlight ? 'text-white' : 'text-argos'}`}>
+              <h3
+                class={`text-xl font-serif font-bold mb-2 ${item.highlight ? "text-white" : "text-argos"}`}
+              >
                 {item.title}
               </h3>
 
-              <p class={`text-xs font-bold uppercase tracking-wide mb-3 ${item.highlight ? 'text-gray-300' : 'text-argos/60'}`}>
-                📍 {item.place}
+              <p
+                class={`text-xs font-bold uppercase tracking-wide mb-3 flex items-center gap-1 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"} ${item.highlight ? "text-gray-300" : "text-argos/60"}`}
+              >
+                <span>📍</span> {item.place}
               </p>
 
-              <p class={`text-sm leading-relaxed ${item.highlight ? 'text-gray-200' : 'text-mensajero'}`}>
+              <p
+                class={`text-sm leading-relaxed ${item.highlight ? "text-gray-200" : "text-mensajero"}`}
+              >
                 {item.desc}
               </p>
-
             </div>
           </div>
-
         </div>
-      ))}
-
-    </div>
-
-    <div class="mt-20 text-center">
-      <div class="inline-block p-1 rounded-full border border-basenji/30 p-8">
-        <p class="font-serif text-xl text-argos italic">
-          "Doctorado Honoris Causa por el Claustro Nobel de las Bellas Artes"
-        </p>
-        <div class="w-12 h-1 bg-basenji mx-auto mt-4"></div>
-      </div>
-    </div>
-
+      ))
+    }
   </div>
-</section>
+</div>
+
+<div class="mt-20 text-center" data-aos="fade-up">
+  <div
+    class="inline-block rounded-full border border-basenji/30 px-8 py-4 bg-white shadow-sm"
+  >
+    <p class="font-serif text-lg text-argos italic">
+      ✨ "Doctorado Honoris Causa por el Claustro Nobel de las Bellas Artes"
+    </p>
+  </div>
+</div>

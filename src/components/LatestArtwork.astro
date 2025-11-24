@@ -1,0 +1,199 @@
+---
+// 1. IMPORTANTE: Importamos el componente de imagen de Astro
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  technique: string;
+  dimensions: string;
+  year: string;
+  price: string;
+  finalImage: string;
+  processImages: string[];
+  videoSrc: string;
+}
+
+const {
+  title,
+  technique,
+  dimensions,
+  year,
+  price,
+  finalImage,
+  processImages,
+  videoSrc,
+} = Astro.props;
+---
+
+<section class="relative py-20 px-4 w-full max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-12">
+    <div class="text-left">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="h-[1px] w-8 bg-oro"></div>
+        <span
+          class="text-oro font-sans font-bold tracking-widest text-sm uppercase"
+          >Nueva Colección {year}</span
+        >
+      </div>
+      <h2
+        class="text-5xl md:text-6xl font-serif font-bold text-argos mb-6 leading-tight"
+      >
+        {title}
+      </h2>
+      <div
+        class="flex flex-col md:flex-row md:flex-wrap gap-y-2 gap-x-8 text-argos/80 font-sans text-sm md:text-base border-l-4 border-oro pl-5 py-1"
+      >
+        <p>
+          <strong class="text-argos font-bold">Técnica:</strong>
+          {technique}
+        </p>
+        <p>
+          <strong class="text-argos font-bold">Medidas:</strong>
+          {dimensions}
+        </p>
+      </div>
+    </div>
+    <div
+      class="text-left lg:text-right flex flex-col lg:items-end justify-end gap-4"
+    >
+      <div>
+        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">
+          Valor de la obra
+        </p>
+        <p class="text-4xl font-serif text-argos">
+          {price}
+          <span class="text-base font-sans text-gray-400 font-normal">MXN</span>
+        </p>
+      </div>
+      <a
+        href="#contacto"
+        class="btn-primary inline-flex items-center justify-center gap-3 shadow-lg shadow-oro/20"
+      >
+        <span>Adquirir Pieza</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px] mb-24">
+    <div
+      class="group relative md:col-span-2 md:row-span-2 rounded-lg overflow-hidden shadow-2xl h-full cursor-zoom-in bg-gray-100"
+    >
+      <div class="marco-dorado z-20"></div>
+
+      <Image
+        id="main-artwork"
+        src={finalImage}
+        alt={`Obra maestra: ${title}`}
+        width={1200}
+        height={900}
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+
+      <div class="absolute top-4 left-4 z-30">
+        <span
+          class="bg-basenji/90 backdrop-blur-sm text-white text-xs font-bold px-4 py-1.5 rounded shadow-lg uppercase tracking-widest border border-white/20"
+        >
+          Pieza Única
+        </span>
+      </div>
+    </div>
+
+    {
+      processImages.map((img, index) => (
+        <div class="group relative rounded-lg overflow-hidden shadow-lg cursor-pointer h-full border border-white/50 hover:border-oro transition-all duration-300 img-trigger bg-gray-100">
+          <div class="absolute inset-0 bg-argos/0 group-hover:bg-argos/10 transition-colors z-10 pointer-events-none" />
+
+          <Image
+            src={img}
+            alt={`Detalle del proceso ${index + 1}`}
+            width={400}
+            height={400}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            data-src={img}
+          />
+
+          <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur text-argos text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
+            VISTA {index + 1}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    videoSrc && (
+      <div class="relative mt-20">
+        <div class="flex items-center justify-center gap-4 mb-8 opacity-40">
+          <div class="h-[1px] w-12 bg-oro" />
+          <span class="font-serif italic text-argos text-sm">
+            Proceso Creativo
+          </span>
+          <div class="h-[1px] w-12 bg-oro" />
+        </div>
+
+        <div class="relative w-full max-w-[350px] md:max-w-sm mx-auto group">
+          <div class="absolute -inset-2 bg-gradient-to-b from-oro/20 via-argos/10 to-oro/20 rounded-2xl blur-lg opacity-30 group-hover:opacity-60 transition duration-700" />
+
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-black aspect-[9/16] border-4 border-white/80">
+            <div class="pointer-events-none absolute inset-0 border border-oro/30 rounded-xl z-20" />
+
+            <video
+              class="w-full h-full object-cover"
+              controls
+              controlsList="nodownload"
+              playsinline
+              poster={finalImage}
+            >
+              <source src={videoSrc} type="video/mp4" />
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+          <p class="text-center text-xs text-gray-400 mt-4 font-sans italic">
+            Ver en pantalla completa para mejor experiencia
+          </p>
+        </div>
+      </div>
+    )
+  }
+</section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const mainImage = document.getElementById(
+      "main-artwork"
+    ) as HTMLImageElement;
+    const triggers = document.querySelectorAll(".img-trigger img");
+
+    if (!mainImage) return;
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        const target = e.target as HTMLImageElement;
+        const newSrc = target.getAttribute("data-src");
+
+        if (newSrc && mainImage.src !== newSrc) {
+          mainImage.style.transition = "opacity 0.2s ease-in-out";
+          mainImage.style.opacity = "0.5";
+
+          setTimeout(() => {
+            mainImage.src = newSrc;
+            mainImage.style.opacity = "1";
+          }, 200);
+        }
+      });
+    });
+  });
+</script>

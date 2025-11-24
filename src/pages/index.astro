@@ -1,20 +1,37 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Gallery from '../components/Gallery.astro';
-import NameArtGenerator from '../components/NameArtGenerator.astro'; // ¡Nuevo!
-import ContactForm from '../components/ContactForm.astro';
-import SocialButtons from '../components/SocialButtons.astro';
-import Footer from '../components/Footer.astro';
-import Particles from '../components/Particles.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import LatestArtwork from "../components/LatestArtwork.astro";
+import About from "../components/About.astro";
+import Gallery from "../components/Gallery.astro";
+import NameArtGenerator from "../components/NameArtGenerator.astro";
+import ContactForm from "../components/ContactForm.astro";
+import SocialButtons from "../components/SocialButtons.astro";
+import Footer from "../components/Footer.astro";
+import Particles from "../components/Particles.astro";
 ---
 
 <Layout title="J. León C. - Artista Plástico">
   <Navbar />
 
-  <main class="relative overflow-hidden pt-16"> <Hero />
+  <main class="relative overflow-hidden pt-16">
+    <Hero />
+
+    <LatestArtwork
+      title="Alca-atraz VII."
+      technique="Mixta sobre tela"
+      dimensions="96 cm X 132 cm"
+      year="2025"
+      price="$24,000"
+      finalImage="/images/alcatras.webp"
+      processImages={[
+        "/images/alcatras1.webp",
+        "/images/alcatras2.webp",
+        "/images/alcatras3.webp",
+      ]}
+      videoSrc="/videos/vid-alcatras.mp4"
+    />
     <About />
     <Gallery />
 
